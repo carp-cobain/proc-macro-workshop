@@ -5,5 +5,29 @@
 //
 // To run the code:
 //     $ cargo run
+use sorted::sorted;
 
-fn main() {}
+#[sorted]
+pub enum Token {
+    BTC,
+    DOGE,
+    ETH,
+    SOL,
+    USDC,
+    XRP,
+}
+
+#[sorted::check]
+fn show(token: Token) {
+    #[sorted]
+    match token {
+        Token::BTC => println!("bitcoin"),
+        Token::ETH => println!("ethereum"),
+        Token::SOL => println!("solana"),
+        _ => println!("shitcoin"),
+    }
+}
+
+fn main() {
+    show(Token::SOL);
+}
